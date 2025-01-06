@@ -24,15 +24,7 @@ class TrainVal():
         self.model_name = config.model_name
         self.model = ClassifyResNet(self.model_name, 4, training=True)
 
-       # 确保模型第一层接受3个通道的输入
-        if isinstance(self.model, ClassifyResNet):
-            # 假设 ClassifyResNet 使用的是 nn.Conv2d 作为第一层卷积
-            if hasattr(self.model, 'conv1') and isinstance(self.model.conv1, torch.nn.Conv2d):
-                # 修改第一层卷积的输入通道数为3
-                self.model.conv1 = torch.nn.Conv2d(3, self.model.conv1.out_channels, 
-                                                   kernel_size=self.model.conv1.kernel_size,
-                                                   stride=self.model.conv1.stride,
-                                                   padding=self.model.conv1.padding)
+        self.model = UNetResNet34(in_channels=3, out_channels=4) 
         if torch.cuda.is_available():
             self.model = torch.nn.DataParallel(self.model)
             self.model = self.model.cuda()
