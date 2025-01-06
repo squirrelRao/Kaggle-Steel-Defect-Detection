@@ -65,7 +65,8 @@ class TrainVal():
             valid_loader: 验证数据的Dataloader
             fold: 当前跑的是第几折
         '''
-        optimizer = optim.Adam(self.model.module.parameters(), self.lr, weight_decay=self.weight_decay)
+        #optimizer = optim.Adam(self.model.module.parameters(), self.lr, weight_decay=self.weight_decay)
+        optimizer = optim.Adam(getattr(self.model, 'module', self.model).parameters(), self.lr, weight_decay=self.weight_decay)
         lr_scheduler = optim.lr_scheduler.CosineAnnealingLR(optimizer, self.epoch+10)
         global_step = 0
 
