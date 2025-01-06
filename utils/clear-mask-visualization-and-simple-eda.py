@@ -45,8 +45,8 @@ input_dir = "datasets/Steel_data/"
 # In[3]:
 
 
-train_df = pd.read_csv("datasets/Steel_data/train.csv")
-sample_df = pd.read_csv("datasets/Steel_data/sample_submission.csv")
+train_df = pd.read_csv("/kaggle/input/steel-detection-datasets/train.csv")
+sample_df = pd.read_csv("/kaggle/input/steel-detection-datasets/sample_submission.csv")
 
 
 # In[4]:
@@ -132,7 +132,7 @@ kind_class_dict
 
 
 train_size_dict = defaultdict(int)
-train_path = Path("datasets/Steel_data/train_images/")
+train_path = Path("/kaggle/input/steel-detection-datasets/train_images/")
 
 for img_name in train_path.iterdir():
     img = Image.open(img_name)
@@ -149,7 +149,7 @@ train_size_dict
 
 
 test_size_dict = defaultdict(int)
-test_path = Path("datasets/Steel_data/test_images/")
+test_path = Path("/kaggle/input/steel-detection-datasets/test_images/")
 
 for img_name in test_path.iterdir():
     img = Image.open(img_name)
