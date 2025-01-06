@@ -69,12 +69,12 @@ class ClassifyTest():
 
 
 if __name__ == "__main__":
-    data_folder = "/home/apple/program/MXQ/Competition/Kaggle/Steal-Defect/Kaggle-Steel-Defect-Detection/datasets/Steel_data"
-    df_path = "/home/apple/program/MXQ/Competition/Kaggle/Steal-Defect/Kaggle-Steel-Defect-Detection/datasets/Steel_data/train.csv"
+    data_folder = "/kaggle/input/steel-detection-datasets"
+    df_path = "/kaggle/input/steel-detection-datasetstrain.csv"
     test_df = pd.read_csv('/kaggle/input/steel-detection-datasets/sample_submission.csv')
     mean = (0.485, 0.456, 0.406)
     std = (0.229, 0.224, 0.225)
-    test_dataset = TestDataset('./datasets/Steel_data/test_images', test_df, mean, std)
+    test_dataset = TestDataset('/kaggle/input/steel-detection-datasets/test_images', test_df, mean, std)
     dataloader = torch.utils.data.DataLoader(
         test_dataset,
         batch_size=20,
