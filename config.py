@@ -44,7 +44,7 @@ def get_seg_config():
         
         # dataset 
         parser.add_argument('--save_path', type=str, default='./checkpoints')
-        parser.add_argument('--dataset_root', type=str, default='./datasets/Steel_data')
+        parser.add_argument('--dataset_root', type=str, default='/kaggle/input/steel-detection-datasets')
 
         config = parser.parse_args()
         # config = {k: v for k, v in args._get_kwargs()}
@@ -91,7 +91,7 @@ def get_classify_config():
         
         # dataset 
         parser.add_argument('--save_path', type=str, default='./checkpoints')
-        parser.add_argument('--dataset_root', type=str, default='./datasets/Steel_data')
+        parser.add_argument('--dataset_root', type=str, default='/kaggle/input/steel-detection-datasets')
 
         config = parser.parse_args()
         # config = {k: v for k, v in args._get_kwargs()}
