@@ -78,7 +78,7 @@ class ClassifyResNet(Module):
         
         # 注意模型里面必须包含 encoder 模块
         self.encoder = model.encoder
-        self.initial_conv = nn.Conv2d(3, 64, kernel_size=3, stride=1, padding=1)
+        self.initial_conv = nn.Conv2d(3, 64, kernel_size=7, stride=2, padding=3)  # 输入为 3 通道，输出为 64 通道
 
         if model_name == 'unet_resnet34':
             self.feature = nn.Conv2d(512, 64, kernel_size=1)
