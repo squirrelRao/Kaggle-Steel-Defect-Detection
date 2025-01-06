@@ -80,6 +80,8 @@ class ClassifyResNet(Module):
         if model_name == 'unet_resnet34':
             self.feature = nn.Conv2d(512, 32, kernel_size=1)
             self.feature = nn.Conv2d(in_channels=64, out_channels=32, kernel_size=1)
+            self.feathre = nn.Conv2d(in_channels=3, out_channels=64, kernel_size=3, stride=1, padding=1)
+            
             #self.feature = nn.Conv2d(3, 24, kernel_size=1)
         elif model_name == 'unet_resnet50':
             self.feature = nn.Sequential(
