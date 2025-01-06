@@ -22,9 +22,9 @@ class TrainVal():
     def __init__(self, config, fold):
         # 加载网络模型
         self.model_name = config.model_name
-        self.model = ClassifyResNet(self.model_name, 4, training=True)
+        self.model = ClassifyResNet(self.model_name, 3, training=True)
 
-        self.model = UNetResNet34(in_channels=3, out_channels=4) 
+        #self.model = UNetResNet34(in_channels=3, out_channels=4) 
         if torch.cuda.is_available():
             self.model = torch.nn.DataParallel(self.model)
             self.model = self.model.cuda()
