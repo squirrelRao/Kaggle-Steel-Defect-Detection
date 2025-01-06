@@ -118,12 +118,12 @@ if __name__ == "__main__":
     average_strategy = False
 
     if kaggle:
-        sample_submission_path = '/kaggle/input/severstal-steel-defect-detection/sample_submission.csv'
-        test_data_folder = "/kaggle/input/severstal-steel-defect-detection/test_images"
+        sample_submission_path = '/kaggle/input/steel-detection-datasets/sample_submission.csv'
+        test_data_folder = "/kaggle/input/steel-detection-datasets/test_images"
         model_path = '/kaggle/input/checkpoints'
     else:
-        sample_submission_path = 'datasets/Steel_data/sample_submission.csv'
-        test_data_folder = 'datasets/Steel_data/test_images'
+        sample_submission_path = '/kaggle/input/steel-detection-datasets/sample_submission.csv'
+        test_data_folder = '/kaggle/input/steel-detection-datasets/test_images'
         model_path = './checkpoints/'
 
     create_submission(classify_splits, segment_splits, batch_size, num_workers, mean, std, test_data_folder,
