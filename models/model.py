@@ -79,7 +79,7 @@ class ClassifyResNet(Module):
         self.encoder = model.encoder
         if model_name == 'unet_resnet34':
             #self.feature = nn.Conv2d(512, 32, kernel_size=1)
-            self.feature = nn.Conv2d(24, 3, kernel_size=1)
+            self.feature = nn.Conv2d(3, 24, kernel_size=1)
         elif model_name == 'unet_resnet50':
             self.feature = nn.Sequential(
                 nn.Conv2d(2048, 512, kernel_size=1),
