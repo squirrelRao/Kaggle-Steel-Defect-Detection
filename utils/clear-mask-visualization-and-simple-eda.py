@@ -13,7 +13,7 @@ import pandas as pd
 pd.set_option("display.max_rows", 101)
 import os
 print('Current work path: ', os.getcwd())
-print(os.listdir("datasets/Steel_data"))
+print(os.listdir("/kaggle/input/steel-detection-datasets"))
 import cv2
 import json
 import matplotlib.pyplot as plt
