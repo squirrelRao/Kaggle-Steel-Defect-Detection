@@ -75,14 +75,13 @@ class ClassifyResNet(Module):
         super(ClassifyResNet, self).__init__()
         self.class_num = class_num
         model = Model(model_name, encoder_weights=encoder_weights, class_num=class_num).create_model_cpu()
+        
         # 注意模型里面必须包含 encoder 模块
         self.encoder = model.encoder
+        self.initial_conv = nn.Conv2d(3, 64, kernel_size=3, stride=1, padding=1)
+
         if model_name == 'unet_resnet34':
-            self.feature = nn.Conv2d(512, 32, kernel_size=1)
-            self.feature = nn.Conv2d(in_channels=64, out_channels=32, kernel_size=1)
-            self.feathre = nn.Conv2d(in_channels=3, out_channels=64, kernel_size=3, stride=1, padding=1)
-            
-            #self.feature = nn.Conv2d(3, 24, kernel_size=1)
+            self.feature = nn.Conv2d(512, 64, kernel_size=1)
         elif model_name == 'unet_resnet50':
             self.feature = nn.Sequential(
                 nn.Conv2d(2048, 512, kernel_size=1),
@@ -109,6 +108,7 @@ class ClassifyResNet(Module):
         self.training = training
 
     def forward(self, x):
+        x = self.initial_conv(x)  # 调整输入通道数
         x = self.encoder(x)[0]
         x = F.dropout(x, 0.5, training=self.training)
         x = F.adaptive_avg_pool2d(x, 1)
